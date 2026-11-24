@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inscription</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input label="Nom" labelPlacement="floating" [(ngModel)]="nom"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Prénom" labelPlacement="floating" [(ngModel)]="prenom"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Âge" labelPlacement="floating" type="number" [(ngModel)]="age"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Email" labelPlacement="floating" type="email" [(ngModel)]="email"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Mot de passe" labelPlacement="floating" type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" class="ion-margin-top" (click)="register()">S'inscrire</ion-button>
+  <ion-button expand="block" fill="clear" routerLink="/login">J'ai déjà un compte</ion-button>
+</ion-content>

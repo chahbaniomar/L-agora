@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mon profil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="profile-wrap">
+    <div class="profile-box">
+
+      <div class="avatar" (click)="changePhoto()">
+        @if (photo) {
+          <img [src]="photo" alt="Photo de profil" />
+        } @else {
+          {{ prenom ? prenom.charAt(0).toUpperCase() : '?' }}
+        }
+      </div>
+      <ion-button fill="clear" size="small" (click)="changePhoto()">Changer la photo</ion-button>
+
+      <h2>{{ prenom }} {{ nom }}</h2>
+      <p class="email">{{ email }}</p>
+
+      <div class="form-grid">
+        <div class="field">
+          <label>Prénom</label>
+          <ion-input aria-label="Prénom" autocomplete="off" [(ngModel)]="prenom"></ion-input>
+        </div>
+
+        <div class="field">
+          <label>Nom</label>
+          <ion-input aria-label="Nom" autocomplete="off" [(ngModel)]="nom"></ion-input>
+        </div>
+
+        <div class="field full">
+          <label>Âge</label>
+          <ion-input aria-label="Âge" type="number" [(ngModel)]="age"></ion-input>
+        </div>
+      </div>
+
+      <ion-button expand="block" (click)="save()">Enregistrer</ion-button>
+    </div>
+  </div>
+</ion-content>

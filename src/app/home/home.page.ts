@@ -17,4 +17,7 @@ export class HomePage {
     await this.auth.logout();
     this.router.navigateByUrl('/login');
   }
+  goProfile() {
+  this.router.navigateByUrl('/profile');
+}
 }

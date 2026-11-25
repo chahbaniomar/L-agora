@@ -1,10 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import {
-  IonContent, IonHeader, IonTitle, IonToolbar,
-  IonItem, IonInput, IonButton, ToastController,
-} from '@ionic/angular';
+import { IonContent, IonInput, IonButton, ToastController } from '@ionic/angular';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -12,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [IonContent, IonHeader, IonTitle, IonToolbar, IonItem, IonInput, IonButton, FormsModule, RouterLink],
+  imports: [IonContent, IonInput, IonButton, FormsModule, RouterLink],
 })
 export class RegisterPage {
   nom = '';

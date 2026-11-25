@@ -6,7 +6,7 @@ import {
   onAuthStateChanged,
   User,
 } from 'firebase/auth';
-import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '../firebase';
 
 @Injectable({ providedIn: 'root' })
@@ -22,15 +22,26 @@ export class AuthService {
     return cred.user;
   }
 
-  login(email: string, password: string) {
-    return signInWithEmailAndPassword(auth, email, password);
+  async login(email: string, password: string) {
+    const cred = await signInWithEmailAndPassword(auth, email, password);
+    const snap = await getDoc(doc(db, 'users', cred.user.uid));
+    if (snap.exists() && snap.data()['active'] === false) {
+      await signOut(auth);
+      throw new Error('account-disabled');
+    }
+    return cred.user;
   }
 
   logout() {
     return signOut(auth);
   }
 
-  onUserChange(callback: (user: User | null) => void) {
-    return onAuthStateChanged(auth, callback);
+  getCurrentUser(): Promise<User | null> {
+    return new Promise((resolve) => {
+      const unsub = onAuthStateChanged(auth, (user) => {
+        unsub();
+        resolve(user);
+      });
+    });
   }
 }

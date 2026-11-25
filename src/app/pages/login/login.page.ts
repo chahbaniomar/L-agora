@@ -28,13 +28,12 @@ export class LoginPage {
     try {
       await this.auth.login(this.email, this.password);
       this.router.navigateByUrl('/home');
-    } catch (e) {
-      const t = await this.toast.create({
-        message: 'Email ou mot de passe incorrect',
-        duration: 2500,
-        color: 'danger',
-      });
-      t.present();
-    }
+    } catch (e: any) {
+  const message = e?.message === 'account-disabled'
+    ? 'Ce compte a été désactivé'
+    : 'Email ou mot de passe incorrect';
+  const t = await this.toast.create({ message, duration: 2500, color: 'danger' });
+  t.present();
+}
   }
 }

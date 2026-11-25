@@ -1,26 +1,40 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Inscription</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="login-bg">
+  <div class="login-wrap">
+    <div class="login-box">
+      <h1 class="logo">L'AGORA</h1>
+      <h2>Créer un compte</h2>
+      <p class="subtitle">Rejoins la communauté et trouve ton prochain film.</p>
 
-<ion-content class="ion-padding">
-  <ion-item>
-    <ion-input label="Nom" labelPlacement="floating" [(ngModel)]="nom"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Prénom" labelPlacement="floating" [(ngModel)]="prenom"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Âge" labelPlacement="floating" type="number" [(ngModel)]="age"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Email" labelPlacement="floating" type="email" [(ngModel)]="email"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-input label="Mot de passe" labelPlacement="floating" type="password" [(ngModel)]="password"></ion-input>
-  </ion-item>
+      <div class="form-grid">
+        <div class="field">
+          <label>Prénom</label>
+          <ion-input aria-label="Prénom" [(ngModel)]="prenom"></ion-input>
+        </div>
 
-  <ion-button expand="block" class="ion-margin-top" (click)="register()">S'inscrire</ion-button>
-  <ion-button expand="block" fill="clear" routerLink="/login">J'ai déjà un compte</ion-button>
+        <div class="field">
+          <label>Nom</label>
+          <ion-input aria-label="Nom" [(ngModel)]="nom"></ion-input>
+        </div>
+
+        <div class="field">
+          <label>Âge</label>
+          <ion-input aria-label="Âge" type="number" [(ngModel)]="age"></ion-input>
+        </div>
+
+        <div class="field full">
+          <label>Email</label>
+          <ion-input placeholder="exemple@email.com" aria-label="Email" type="email" [(ngModel)]="email"></ion-input>
+        </div>
+
+        <div class="field full">
+          <label>Mot de passe</label>
+          <ion-input aria-label="Mot de passe" type="password" [(ngModel)]="password"></ion-input>
+        </div>
+      </div>
+
+      <ion-button expand="block" (click)="register()">S'inscrire</ion-button>
+
+      <p class="hint">Déjà membre ? <a routerLink="/login">Se connecter</a></p>
+    </div>
+  </div>
 </ion-content>

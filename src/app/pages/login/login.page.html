@@ -1,20 +1,23 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>L'Agora</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="login-bg">
+  <div class="login-wrap">
+    <div class="login-box">
+      <h1 class="logo">L'AGORA</h1>
+      <h2>Connexion</h2>
+      <p class="subtitle">Content de te revoir sur L'Agora.</p>
 
-<ion-content class="ion-padding">
-  <h2>Connexion</h2>
+      <div class="field">
+        <label>Email</label>
+        <ion-input placeholder="exemple@email.com" aria-label="Email" type="email" [(ngModel)]="email"></ion-input>
+      </div>
 
-  <ion-item>
-    <ion-input label="Email" labelPlacement="floating" type="email" [(ngModel)]="email"></ion-input>
-  </ion-item>
+      <div class="field">
+        <label>Mot de passe</label>
+        <ion-input aria-label="Mot de passe" type="password" [(ngModel)]="password"></ion-input>
+      </div>
 
-  <ion-item>
-    <ion-input label="Mot de passe" labelPlacement="floating" type="password" [(ngModel)]="password"></ion-input>
-  </ion-item>
+      <ion-button expand="block" (click)="login()">Se connecter</ion-button>
 
-  <ion-button expand="block" class="ion-margin-top" (click)="login()">Se connecter</ion-button>
-  <ion-button expand="block" fill="clear" routerLink="/register">Créer un compte</ion-button>
+      <p class="hint">Première visite sur L'Agora ? <a routerLink="/register">S'inscrire</a></p>
+    </div>
+  </div>
 </ion-content>

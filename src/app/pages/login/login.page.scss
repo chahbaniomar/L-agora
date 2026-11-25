@@ -1,0 +1,101 @@
+.login-bg {
+  --background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.95)),
+                url('https://assets.nflxext.com/ffe/siteui/vlv3/9d3533b2-0e2b-40b2-95e0-ecd7979cc88b/web/FR-fr-20240102-popsignuptwoweeks-perspective_alpha_website_large.jpg') center / cover;
+}
+
+.login-wrap {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 440px;
+  padding: 40px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+.logo {
+  margin: 0 0 20px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: #e50914;
+}
+
+h2 {
+  margin: 0 0 6px;
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0 0 28px;
+  color: #a3a3a3;
+  font-size: 0.95rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+
+  label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #b3b3b3;
+  }
+}
+
+ion-input {
+  --background: transparent;
+  --color: #ffffff;
+  --placeholder-color: #7a7a7a;
+  --placeholder-opacity: 1;
+  --padding-start: 14px;
+  --padding-end: 14px;
+  min-height: 50px;
+  background: #2b2b2b;
+  border: 1px solid #444;
+  border-radius: 6px;
+  transition: border-color 0.2s;
+
+  &.has-focus {
+    border-color: #e50914;
+  }
+}
+
+ion-button {
+  --border-radius: 6px;
+  height: 50px;
+  margin-top: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.hint {
+  margin-top: 24px;
+  text-align: center;
+  color: #a3a3a3;
+
+  a {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-box {
+    padding: 28px 20px;
+  }
+}

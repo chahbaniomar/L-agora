@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Administration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="admin-wrap">
+
+    <div class="tabs">
+      <button [class.active]="tab === 'users'" (click)="tab = 'users'">Utilisateurs ({{ users.length }})</button>
+      <button [class.active]="tab === 'films'" (click)="tab = 'films'">Films ({{ films.length }})</button>
+    </div>
+
+    @if (tab === 'users') {
+      <div class="card">
+        @for (u of users; track u.id) {
+          <div class="row">
+            <div class="info">
+              <strong>{{ u.prenom }} {{ u.nom }}</strong>
+              <span>{{ u.email }}</span>
+            </div>
+            <span class="badge" [class.off]="!u.active">{{ u.active ? 'Actif' : 'Désactivé' }}</span>
+            @if (u.role === 'admin') {
+              <span class="badge admin">Admin</span>
+            }
+            <ion-button
+              size="small"
+              [color]="u.active ? 'danger' : 'success'"
+              (click)="toggleActive(u)">
+              {{ u.active ? 'Désactiver' : 'Activer' }}
+            </ion-button>
+          </div>
+        } @empty {
+          <p class="empty">Aucun utilisateur.</p>
+        }
+      </div>
+    }
+
+    @if (tab === 'films') {
+      <div class="card">
+        <h3>Ajouter un film</h3>
+
+        <div class="form-grid">
+          <div class="field full">
+            <label>Titre</label>
+            <ion-input aria-label="Titre" autocomplete="off" [(ngModel)]="titre"></ion-input>
+          </div>
+
+          <div class="field full">
+            <label>Résumé</label>
+            <textarea rows="4" [(ngModel)]="resume"></textarea>
+          </div>
+
+          <div class="field">
+            <label>Année de sortie</label>
+            <ion-input aria-label="Année" type="number" [(ngModel)]="annee"></ion-input>
+          </div>
+
+          <div class="field">
+            <label>Genres (séparés par une virgule)</label>
+            <ion-input aria-label="Genres" autocomplete="off" [(ngModel)]="genres"></ion-input>
+          </div>
+
+          <div class="field full">
+            <label>Acteurs (séparés par une virgule)</label>
+            <ion-input aria-label="Acteurs" autocomplete="off" [(ngModel)]="acteurs"></ion-input>
+          </div>
+
+          <div class="field full">
+            <label>Lien de l'affiche (URL)</label>
+            <ion-input aria-label="Affiche" autocomplete="off" [(ngModel)]="affiche"></ion-input>
+          </div>
+        </div>
+
+        <ion-button expand="block" (click)="addFilm()">Ajouter le film</ion-button>
+      </div>
+
+      <div class="card">
+        <h3>Films ajoutés</h3>
+        @for (f of films; track f.id) {
+          <div class="row">
+            <div class="info">
+              <strong>{{ f.titre }} ({{ f.annee }})</strong>
+              <span>{{ f.genres.join(', ') }}</span>
+            </div>
+            <ion-button size="small" color="danger" fill="outline" (click)="deleteFilm(f)">Supprimer</ion-button>
+          </div>
+        } @empty {
+          <p class="empty">Aucun film ajouté pour le moment.</p>
+        }
+      </div>
+    }
+
+  </div>
+</ion-content>

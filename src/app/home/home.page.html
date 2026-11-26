@@ -1,11 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>L'Agora</ion-title>
-   
-      <ion-buttons slot="end">
-  <ion-button (click)="goProfile()">Mon profil</ion-button>
-  <ion-button (click)="logout()">Déconnexion</ion-button>
-</ion-buttons>   
+    <ion-buttons slot="end">
+      @if (isAdmin) {
+        <ion-button (click)="goAdmin()">Administration</ion-button>
+      }
+      <ion-button (click)="goProfile()">Mon profil</ion-button>
+      <ion-button (click)="logout()">Déconnexion</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
